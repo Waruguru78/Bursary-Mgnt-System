@@ -151,7 +151,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Add Beneficiary</button>
+                  <button type="submit" class="btn btn-primary">Add Beneficiary</button>
                 </div>
               </div>
             </div>
@@ -173,7 +173,7 @@
                   <tr>
                     <th scope="row">1</th>
                     <td>
-                      <a href="user.html" class="text-decoration-none text-dark">Amelia Rose Garcia</a>
+                      <a href="user.html" class="person-link text-decoration-none text-dark">Amelia Rose Garcia</a>
                     </td>
                     <td>Otto</td>
                     <td>Year2</td>
@@ -182,7 +182,9 @@
                   </tr>
                   <tr>
                     <th scope="row">2</th>
-                    <td>Sophia Elizabeth Lee</td>
+                    <td>
+                      <a href="user.html" class="person-link text-decoration-none text-dark">Sophia Elizabeth Lee</a>
+                    </td>
                     <td>Thornton</td>
                     <td>Form 2</td>
                     <td>Mkomani</td>
@@ -190,7 +192,9 @@
                   </tr>
                   <tr>
                     <th scope="row">3</th>
-                    <td>Olivia Grace Robinson</td>
+                    <td>
+                      <a href="user.html" class="person-link text-decoration-none text-dark">Olivia Grace Robinson</a>
+                    </td>
                     <td>Larry</td>
                     <td>Form 3</td>
                     <td>Nyali</td>
@@ -198,7 +202,9 @@
                   </tr>
                   <tr>
                     <th scope="row">4</th>
-                    <td>Isabella Marie Davis</td>
+                    <td>
+                      <a href="user.html" class="person-link text-decoration-none text-dark">Isabella Marie Davis</a>
+                    </td>
                     <td>Bird</td>
                     <td>Form 3</td>
                     <td>Frere Town</td>
@@ -206,7 +212,9 @@
                   </tr>
                   <tr>
                     <th scope="row">5</th>
-                    <td>Ava Charlotte Hernandez</td>
+                    <td>
+                      <a href="user.html" class="person-link text-decoration-none text-dark">Ava Charlotte Hernandez</a>
+                    </td>
                     <td>Coast</td>
                     <td>Year 3</td>
                     <td>Nyali</td>
@@ -223,7 +231,23 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/Script.js"></script>
+    <script>
+      $(function() {
+        // Attach click event handler to all person links
+        $('.person-link').click(function(event) {
+          event.preventDefault();
+      
+          // Get the person ID from the data attribute
+          var personId = $(this).data('person-id');
+      
+          // Send AJAX request to server-side script
+          $.get('get_person_info.php?id=' + personId, function(response) {
+            // Display the person's information
+            alert(response);
+          });
+        });
+      });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
